@@ -45,14 +45,17 @@ sidebarContainer.addEventListener("click", () => {
 });
 
 // Section One Slider
+var t;
 var sectionOneSlideIndex = 0;
-showSectionOneSlides(sectionOneSlideIndex);
+showSectionOneSlidesAuto();
 
 function sectionOneCurrentSlide(n) {
-  showSectionOneSlides((sectionOneSlideIndex = n));
+  showSectionOneSlidesManual((sectionOneSlideIndex = n));
+  clearTimeout(t);
 }
 
-function showSectionOneSlides(n) {
+// Section One Slider Auto
+function showSectionOneSlidesAuto() {
   var sectionOneSlides = document.getElementsByClassName(
     "section-one-slide-content"
   );
@@ -71,7 +74,40 @@ function showSectionOneSlides(n) {
 
   sectionOneSlides[sectionOneSlideIndex - 1].style.display = "flex";
   sectionOneRects[sectionOneSlideIndex - 1].classList.add("active");
-  setTimeout(showSectionOneSlides, 5000);
+  t = setTimeout(showSectionOneSlidesAuto, 5000);
+}
+
+// Section One Slider Manuall
+function showSectionOneSlidesManual(n) {
+  var sectionOneSlides = document.getElementsByClassName(
+    "section-one-slide-content"
+  );
+  var sectionOneRects = document.getElementsByClassName("section-one-rect");
+
+  for (let i = 0; i < sectionOneSlides.length; i++) {
+    sectionOneSlides[i].style.display = "none";
+  }
+
+  for (let i = 0; i < sectionOneRects.length; i++) {
+    sectionOneRects[i].classList.remove("active");
+  }
+
+  if (n === 0) {
+    sectionOneSlides[0].style.display = "flex";
+    sectionOneRects[0].classList.add("active");
+  } else if (n === 1) {
+    sectionOneSlides[1].style.display = "flex";
+    sectionOneRects[1].classList.add("active");
+  } else if (n === 2) {
+    sectionOneSlides[2].style.display = "flex";
+    sectionOneRects[2].classList.add("active");
+  } else if (n === 3) {
+    sectionOneSlides[3].style.display = "flex";
+    sectionOneRects[3].classList.add("active");
+  } else if (n === 4) {
+    sectionOneSlides[4].style.display = "flex";
+    sectionOneRects[4].classList.add("active");
+  }
 }
 
 // Section Three Slider
@@ -108,6 +144,18 @@ function showSectionThreeSlides(n) {
 
       sectionThreeSlides[0].style.display = "flex";
       sectionThreeRects[0].classList.add("active");
+
+      sectionThreeSlides[0].classList.add("section-three-right-to-left-slide");
+
+      sectionThreeSlides[1].classList.remove(
+        "section-three-right-to-left-slide"
+      );
+      sectionThreeSlides[2].classList.remove(
+        "section-three-right-to-left-slide"
+      );
+      sectionThreeSlides[3].classList.remove(
+        "section-three-right-to-left-slide"
+      );
     }
     if (n === 1) {
       for (let i = 0; i < sectionThreeSlides.length; i++) {
@@ -119,6 +167,18 @@ function showSectionThreeSlides(n) {
 
       sectionThreeSlides[1].style.display = "flex";
       sectionThreeRects[1].classList.add("active");
+
+      sectionThreeSlides[1].classList.add("section-three-right-to-left-slide");
+
+      sectionThreeSlides[0].classList.remove(
+        "section-three-right-to-left-slide"
+      );
+      sectionThreeSlides[2].classList.remove(
+        "section-three-right-to-left-slide"
+      );
+      sectionThreeSlides[3].classList.remove(
+        "section-three-right-to-left-slide"
+      );
     }
     if (n === 2) {
       for (let i = 0; i < sectionThreeSlides.length; i++) {
@@ -130,6 +190,18 @@ function showSectionThreeSlides(n) {
 
       sectionThreeSlides[2].style.display = "flex";
       sectionThreeRects[2].classList.add("active");
+
+      sectionThreeSlides[2].classList.add("section-three-right-to-left-slide");
+
+      sectionThreeSlides[0].classList.remove(
+        "section-three-right-to-left-slide"
+      );
+      sectionThreeSlides[1].classList.remove(
+        "section-three-right-to-left-slide"
+      );
+      sectionThreeSlides[3].classList.remove(
+        "section-three-right-to-left-slide"
+      );
     }
     if (n === 3) {
       for (let i = 0; i < sectionThreeSlides.length; i++) {
@@ -141,6 +213,18 @@ function showSectionThreeSlides(n) {
 
       sectionThreeSlides[3].style.display = "flex";
       sectionThreeRects[3].classList.add("active");
+
+      sectionThreeSlides[3].classList.add("section-three-right-to-left-slide");
+
+      sectionThreeSlides[0].classList.remove(
+        "section-three-right-to-left-slide"
+      );
+      sectionThreeSlides[1].classList.remove(
+        "section-three-right-to-left-slide"
+      );
+      sectionThreeSlides[2].classList.remove(
+        "section-three-right-to-left-slide"
+      );
     }
   } else if (innerWidth < 1300) {
     sectionThreeRects[2].style.display = "none";
@@ -154,6 +238,16 @@ function showSectionThreeSlides(n) {
       sectionThreeSlides[2].style.display = "none";
       sectionThreeSlides[3].style.display = "none";
       sectionThreeRects[1].classList.remove("active");
+
+      sectionThreeSlides[0].classList.add("section-three-right-to-left-slide");
+      sectionThreeSlides[1].classList.add("section-three-right-to-left-slide");
+
+      sectionThreeSlides[2].classList.remove(
+        "section-three-left-to-right-slide"
+      );
+      sectionThreeSlides[3].classList.remove(
+        "section-three-left-to-right-slide"
+      );
     }
 
     if (n === 1) {
@@ -164,6 +258,16 @@ function showSectionThreeSlides(n) {
       sectionThreeSlides[0].style.display = "none";
       sectionThreeSlides[1].style.display = "none";
       sectionThreeRects[0].classList.remove("active");
+
+      sectionThreeSlides[2].classList.add("section-three-left-to-right-slide");
+      sectionThreeSlides[3].classList.add("section-three-left-to-right-slide");
+
+      sectionThreeSlides[0].classList.remove(
+        "section-three-right-to-left-slide"
+      );
+      sectionThreeSlides[1].classList.remove(
+        "section-three-right-to-left-slide"
+      );
     }
   } else {
     sectionThreeRects[2].style.display = "none";
@@ -176,23 +280,30 @@ function showSectionThreeSlides(n) {
     if (n === 0) {
       sectionThreeSlides[3].style.display = "none";
       sectionThreeRects[0].classList.add("active");
-      sectionThreeSlider[0].classList.add("section-three-right-scroll-slider");
-      sectionThreeSlider[0].classList.remove(
-        "section-three-left-scroll-slider"
-      );
 
       sectionThreeRects[1].classList.remove("active");
+
+      sectionThreeSlider[0].classList.add("section-three-right-to-left-slide");
+
+      // sectionThreeSlides[1].classList.add("section-three-right-to-left-slide");
+      // sectionThreeSlides[2].classList.add("section-three-right-to-left-slide");
+      sectionThreeSlider[0].classList.remove(
+        "section-three-left-to-right-slide"
+      );
     }
 
     if (n === 1) {
       sectionThreeSlides[0].style.display = "none";
       sectionThreeRects[1].classList.add("active");
-      sectionThreeSlider[0].classList.add("section-three-left-scroll-slider");
-      sectionThreeSlider[0].classList.remove(
-        "section-three-right-scroll-slider"
-      );
 
       sectionThreeRects[0].classList.remove("active");
+
+      sectionThreeSlider[0].classList.add("section-three-left-to-right-slide");
+      // sectionThreeSlides[2].classList.add("section-three-left-to-right-slide");
+      // sectionThreeSlides[3].classList.add("section-three-left-to-right-slide");
+      sectionThreeSlides[0].classList.remove(
+        "section-three-right-to-left-slide"
+      );
     }
   }
 }
