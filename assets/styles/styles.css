@@ -1561,6 +1561,10 @@ html {
     transform: translateX(-50%);
   }
 
+  .aim::before {
+    display: none;
+  }
+
   .label-on-image {
     bottom: -19%;
     padding: 1.5rem;
